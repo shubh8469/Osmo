@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">News App</string>
+    <string name="facebook_app_id">xxxxxxxxxxx</string>
+    <string name="fb_login_protocol_scheme">fbxxxxxxxxxxx</string>
+    <string name="facebook_client_token">xxxxxxxxxxxxxxxxx</string>
+</resources>
