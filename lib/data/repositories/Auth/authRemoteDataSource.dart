@@ -133,6 +133,7 @@ class AuthRemoteDataSource {
           } else {
             throw ApiMessageAndCodeException(errorMessage: UiUtils.getTranslatedLabel(context, 'somethingMSg'));
           }
+
         case AuthProvider.fb:
           final faceBookAuthResult = await signInWithFacebook();
           if (faceBookAuthResult != null) {

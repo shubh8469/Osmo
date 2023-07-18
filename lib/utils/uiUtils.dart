@@ -47,6 +47,10 @@ class UiUtils {
     return "assets/images/$imageName";
   }
 
+  static String AvatarImagePath(String imageName) {
+    return "assets/images/profile/$imageName";
+  }
+
   static String getFlagImagePath(String imageName) {
     return "assets/images/flag/$imageName";
   }

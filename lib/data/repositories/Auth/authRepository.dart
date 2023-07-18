@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:news/utils/api.dart';
 
 import '../../../cubits/Auth/authCubit.dart';
+import '../../../utils/constant.dart';
 import '../../../utils/strings.dart';
 import 'authLocalDataSource.dart';
 import 'authRemoteDataSource.dart';
@@ -36,6 +37,7 @@ class AuthRepository {
       PROFILE: _authLocalDataSource.getProfile(),
       STATUS: _authLocalDataSource.getStatus(),
       ROLE: _authLocalDataSource.getRole(),
+      FireBaseid: _authLocalDataSource.getFirebaseId(),
     };
   }
 
@@ -48,7 +50,9 @@ class AuthRepository {
       required String type,
       required String profile,
       required String status,
-      required String role}) {
+      required String role,
+      String? firebaseId,
+      }) {
     _authLocalDataSource.changeAuthStatus(authStatus);
     _authLocalDataSource.setId(id);
     _authLocalDataSource.setName(name);
@@ -58,6 +62,7 @@ class AuthRepository {
     _authLocalDataSource.setProfile(profile);
     _authLocalDataSource.setStatus(status);
     _authLocalDataSource.setRole(role);
+    _authLocalDataSource.setFirebaseId(firebaseId);
   }
 
   //First we signin user with given provider then add user details
@@ -66,6 +71,10 @@ class AuthRepository {
       final result = await _authRemoteDataSource.socialSignInUser(context: context, authProvider: authProvider, email: email, password: password, verifiedId: verifiedId, otp: otp);
       final user = result['user'] as User;
       var providerData = user.providerData[0];
+
+      // firebaseId = user.uid ?? "";
+      // mobile = providerData.phoneNumber ?? "";
+
 
       Map<String, dynamic> userDataTest = await _authRemoteDataSource.loginAuth(
           mobile: providerData.phoneNumber ?? "",
@@ -86,8 +95,12 @@ class AuthRepository {
             id: userDataTest["data"][ID] ?? "0",
             mobile: userDataTest["data"][MOBILE] ?? "",
             role: userDataTest["data"][ROLE] ?? "",
-            status: userDataTest["data"][STATUS] ?? "");
+            status: userDataTest["data"][STATUS] ?? "",
+            firebaseId: user.uid
+        );
       }
+
+      // setState((){});
 
       return userDataTest;
     } catch (e) {
@@ -96,6 +109,40 @@ class AuthRepository {
     }
   }
 
+  Future<Map<String, dynamic>> signInUserSignUp({required BuildContext context, String? email, String? mobile, String? displayName, String? photo, String? firebaseId}) async {
+    try {
+      // final result = await _authRemoteDataSource.socialSignInUser(context: context, authProvider: authProvider, email: email, password: password, verifiedId: verifiedId, otp: otp);
+      // final user = result['user'] as User;
+      // var providerData = user.providerData[0];
+
+      Map<String, dynamic> userDataTest = await _authRemoteDataSource.loginAuth(
+          mobile: mobile ?? "",
+          context: context,
+          email: email ?? "",
+          firebaseId: firebaseId ?? "",
+          name: displayName ?? "",
+          profile: photo ?? "",
+          type: 'mobile');
+
+      if (userDataTest["data"][STATUS] != "0") {
+        setLocalAuthDetails(
+            type: userDataTest["data"][TYPE] ?? "",
+            profile: userDataTest["data"][PROFILE] ?? "",
+            name: userDataTest["data"][NAME] ?? "",
+            email: userDataTest["data"][EMAIL] ?? "",
+            authStatus: true,
+            id: userDataTest["data"][ID] ?? "0",
+            mobile: userDataTest["data"][MOBILE] ?? "",
+            role: userDataTest["data"][ROLE] ?? "",
+            status: userDataTest["data"][STATUS] ?? "");
+      }
+
+      return userDataTest;
+    } catch (e) {
+      // signOut(authProvider);
+      throw ApiMessageAndCodeException(errorMessage: e.toString());
+    }
+  }
   //to update fcmId user's data to database. This will be in use when authenticating using fcmId
   Future<Map<String, dynamic>> updateFcmId({required String userId, required String fcmId, required BuildContext context}) async {
     final result = await _authRemoteDataSource.updateFcmId(userId: userId, fcmId: fcmId, context: context);

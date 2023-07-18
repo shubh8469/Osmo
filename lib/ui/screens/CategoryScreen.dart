@@ -64,8 +64,8 @@ class CategoryScreenState extends State<CategoryScreen> {
                 physics: const AlwaysScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 padding: EdgeInsets.only(top: 25, bottom: MediaQuery.of(context).size.height / 10.0, left: 10, right: 10),
-                crossAxisCount: 3,
-                childAspectRatio: 0.82,
+                crossAxisCount: 2,
+                childAspectRatio: 1.2,
                 shrinkWrap: true,
                 controller: _categoryScrollController,
                 children: List.generate(state.category.length, (index) {
@@ -114,10 +114,10 @@ class CategoryScreenState extends State<CategoryScreen> {
         children: [
           (category.image != null)
               ? CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  radius: 45,
-                  child: ClipOval(child: CustomNetworkImage(networkImageUrl: category.image!, height: 85, isVideo: false, width: 85, fit: BoxFit.cover)),
-                )
+            backgroundColor: Colors.transparent,
+            radius: 45,
+            child: ClipOval(child: CustomNetworkImage(networkImageUrl: category.image!, height: 85, isVideo: false, width: 85, fit: BoxFit.cover)),
+          )
               : const SizedBox.shrink(),
           Padding(
             padding: const EdgeInsets.only(top: 3),

@@ -7,9 +7,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:in_app_review/in_app_review.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:news/app/app.dart';
 import 'package:news/app/routes.dart';
 import 'package:news/cubits/Auth/authCubit.dart';
@@ -31,6 +33,8 @@ import 'package:news/utils/constant.dart';
 import 'package:news/ui/styles/appTheme.dart';
 import 'package:news/ui/styles/colors.dart';
 import 'package:news/ui/widgets/SnackBarWidget.dart';
+
+import '../../../cubits/languageJsonCubit.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -91,8 +95,16 @@ class ProfileScreenState extends State<ProfileScreen> {
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: state.otherPage.length,
-            itemBuilder: ((context, index) =>
-                setDrawerItem(state.otherPage[index].title!, Icons.info_rounded, false, true, false, 7, image: state.otherPage[index].image!, desc: state.otherPage[index].pageContent)),
+            itemBuilder: ((context, index)
+            {
+                  return Padding(
+                    padding:  EdgeInsets.only(top: 10),
+                    child: setDrawerItem(state.otherPage[index].title!,
+                        Icons.info_rounded, false, true, false, 7,
+                        image: state.otherPage[index].image!,
+                        desc: state.otherPage[index].pageContent),
+                  );
+                }),
           ),
         );
       } else {
@@ -150,33 +162,34 @@ class ProfileScreenState extends State<ProfileScreen> {
               image,
               width: 25,
               height: 25,
-              color: UiUtils.getColorScheme(context).primaryContainer,
+              color: darkSecondaryColor,
               errorBuilder: (context, error, stackTrace) {
-                return Icon(icon);
+                return Icon(icon, color: darkSecondaryColor,);
               },
             )
           : Icon(
               icon,
               size: 25,
+              color: darkSecondaryColor,
             ),
-      iconColor: UiUtils.getColorScheme(context).primaryContainer,
+      iconColor: darkSecondaryColor,
       trailing: (isTrailing)
-          ? SizedBox(
-              height: 45,
-              width: 55,
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: Switch.adaptive(
-                  onChanged: (id == 0) ? switchTheme : switchNotification,
-                  value: (id == 0) ? getTheme() : getNotification(),
-                  activeColor: Theme.of(context).primaryColor,
-                  activeTrackColor: Theme.of(context).primaryColor,
-                  inactiveThumbColor: Colors.grey,
-                  inactiveTrackColor: Colors.grey,
-                ),
-              ))
+        ? SizedBox(
+        height: 45,
+        width: 55,
+        child: FittedBox(
+          fit: BoxFit.fill,
+          child: Switch.adaptive(
+            onChanged: (id == 0) ? switchTheme : switchNotification,
+            value: (id == 0) ? getTheme() : getNotification(),
+            activeColor: Theme.of(context).primaryColor,
+            activeTrackColor: Theme.of(context).primaryColor,
+            inactiveThumbColor: Colors.grey,
+            inactiveTrackColor: Colors.grey,
+          ),
+        ))
           : const SizedBox.shrink(),
-      title: CustomTextLabel(text: title, textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(color: UiUtils.getColorScheme(context).primaryContainer)),
+      title: Text("${context.read<LanguageJsonCubit>().getTranslatedLabels(title)}", style: TextStyle(color: darkSecondaryColor, fontSize: MediaQuery.of(context).size.height * 0.028, fontWeight: FontWeight.w500),),
       onTap: () {
         if (isNavigate) {
           switch (id) {
@@ -210,6 +223,15 @@ class ProfileScreenState extends State<ProfileScreen> {
               break;
             case 11:
               deleteAccount();
+              break;
+            case 12:
+              if (context.read<AuthCubit>().getUserId() != "0")
+              {
+                Navigator.of(context).pushNamed(Routes.Userprofile);
+              }
+              else{
+                Navigator.of(context).pushNamed(Routes.login);
+              }
               break;
             default:
               break;
@@ -649,6 +671,9 @@ class ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget setHeader() {
+
+    print("profileImage --> ${context.read<AuthCubit>().getProfile()}");
+
     return BlocBuilder<AuthCubit, AuthState>(builder: (context, authState) {
       if (authState is Authenticated && context.read<AuthCubit>().getUserId() != "0") {
         getUserData();
@@ -847,56 +872,126 @@ class ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget setBody() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
-      child: Container(
-          padding: const EdgeInsetsDirectional.only(start: 20.0, end: 20.0),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0), color: Theme.of(context).colorScheme.background),
-          child: ScrollConfiguration(
-            behavior: GlobalScrollBehavior(),
-            child: BlocBuilder<AuthCubit, AuthState>(
-              builder: (context, state) {
-                return ListView(
-                  padding: const EdgeInsetsDirectional.only(top: 10.0),
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  children: <Widget>[
-                    setDrawerItem('darkModeLbl', Icons.swap_horizontal_circle, true, false, true, 0),
-                    setDrawerItem('notificationLbl', Icons.notifications_rounded, true, false, true, 1),
-                    setDrawerItem('changeLang', Icons.g_translate_rounded, false, true, false, 2),
-                    if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('bookmarkLbl', Icons.bookmarks_rounded, false, true, false, 3),
-                    if (context.read<AuthCubit>().getUserId() != "0" && context.read<AuthCubit>().getRole() != "0") setDrawerItem('createNewsLbl', Icons.add_box_outlined, false, true, false, 4),
-                    if (context.read<AuthCubit>().getUserId() != "0" && context.read<AuthCubit>().getRole() != "0") setDrawerItem('manageNewsLbl', Icons.edit_note, false, true, false, 5),
-                    if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('managePreferences', Icons.thumbs_up_down_rounded, false, true, false, 6),
-                    pagesBuild(),
-                    setDrawerItem('rateUs', Icons.stars_sharp, false, true, false, 8),
-                    setDrawerItem('shareApp', Icons.share_rounded, false, true, false, 9),
-                    if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('logoutLbl', Icons.logout_rounded, false, true, false, 10),
-                    if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('deleteAcc', Icons.delete_forever_rounded, false, true, false, 11),
-                  ],
-                );
-              },
-            ),
-          )),
-    );
+    return Container(
+        padding: const EdgeInsetsDirectional.only(start: 20.0, end: 20.0, top: 33),
+        child: ScrollConfiguration(
+          behavior: GlobalScrollBehavior(),
+          child: BlocBuilder<AuthCubit, AuthState>(
+            builder: (context, state) {
+              return Column(
+                children: [
+                  // SizedBox(height: 25,),
+                  ListView(
+                    // padding: const EdgeInsetsDirectional.only(top: 10.0),
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    children: <Widget>[
+                      setDrawerItem('User Profile', Icons.manage_accounts, false, true, true, 12),
+                      SizedBox(height: 10,),
+                      // setDrawerItem('darkModeLbl', Icons.swap_horizontal_circle, true, false, true, 0),
+                      // setDrawerItem('notificationLbl', Icons.notifications_rounded, true, false, true, 1),
+                      setDrawerItem('changeLang', Icons.g_translate_rounded, false, true, false, 2),
+                      // SizedBox(height: 10,),
+
+                      if (context.read<AuthCubit>().getUserId() != "0") SizedBox(height: 10,),
+                      if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('bookmarkLbl', Icons.bookmarks_rounded, false, true, false, 3),
+                      if (context.read<AuthCubit>().getUserId() != "0") SizedBox(height: 10,),
+
+                      if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('categoryLbl', Icons.thumbs_up_down_rounded, false, true, false, 6),
+                      // SizedBox(height: 10,),
+                      pagesBuild(),
+                      // setDrawerItem('rateUs', Icons.stars_sharp, false, true, false, 8),
+                      // setDrawerItem('shareApp', Icons.share_rounded, false, true, false, 9),
+                      // SizedBox(height: 8,),
+                      // if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('logoutLbl', Icons.logout_rounded, false, true, false, 10),
+                      SizedBox(height: 10,),
+                      if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('deleteAcc', Icons.delete_forever_rounded, false, true, false, 11),
+                    ],
+                  ),
+                  SizedBox(height: 35,),
+                  if (context.read<AuthCubit>().getUserId() != "0")
+                    Center(
+                    child: Container(
+                      height: height! * 0.055,
+                      width: width! * 0.8,
+                      child: ElevatedButton(
+                        child: Text('LOGOUT', style: GoogleFonts.acme( color: Colors.grey.shade700, fontSize: height! * 0.025,),),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          textStyle: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 10,
+                              fontStyle: FontStyle.normal),
+                        ),
+                        onPressed: () {
+                          logOutDailog();
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ));
   }
+
+  double? width, height;
 
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     return SafeArea(
         child: Scaffold(
             body: Stack(
       children: [
-        SingleChildScrollView(
-            padding: const EdgeInsetsDirectional.only(start: 15.0, end: 15.0, top: 25.0, bottom: 10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                setHeader(),
-                setBody(),
-              ],
-            )),
+        Stack(
+          children: [
+            // Image.asset(
+            //   UiUtils.getImagePath("background.png"),
+            //   height: double.infinity,
+            //   width: double.infinity,
+            //   fit: BoxFit.fill,
+            // ),
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 20,),
+                  ListTile(
+                    // leading: InkWell(
+                    //     onTap: () => Navigator.of(context).pop(),
+                    //     splashColor: Colors.transparent,
+                    //     highlightColor: Colors.transparent,
+                    //     child: Icon(Icons.arrow_back, color: darkSecondaryColor,)
+                    // ),
+                    leading: Image.asset(UiUtils.getImagePath("osmosplash.png"), height: 40, width: 50,),
+                    title: Center(
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.only(start: 0),
+                        child: Text("MENU", style: GoogleFonts.aBeeZee(color: darkSecondaryColor, fontSize: MediaQuery.of(context).size.height * 0.028, fontWeight: FontWeight.w600),),
+                      ),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: Icon(Ionicons.close_outline, size: 30,),color: darkSecondaryColor,),
+                    // actions: [skipBtn()],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      // setHeader(),
+                      setBody(),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ],
     )));
   }

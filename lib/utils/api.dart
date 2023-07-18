@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -111,10 +112,13 @@ class Api {
       }
       final Dio dio = Dio();
       body[ACCESS_KEY] = accessKey;
+
       final FormData formData = FormData.fromMap(body, ListFormat.multiCompatible);
       debugPrint("Requested APi - $url & params are ${formData.fields}");
 
       final response = await dio.post(url, data: formData, options: Options(headers: headers));
+
+      log("------> ${response.data.toString()}");
       if (response.data['error'] == 'true') {
         debugPrint("APi exception msg - ${response.data['message']}");
         throw ApiException(response.data['message']);

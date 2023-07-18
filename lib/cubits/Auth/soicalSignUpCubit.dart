@@ -44,4 +44,17 @@ class SocialSignUpCubit extends Cubit<SocialSignUpState> {
       emit(SocialSignUpFailure(e.toString()));
     });
   }
+
+  void socialSignUpUserSignUp({AuthProvider? authProvider, required BuildContext context, String? email, String? mobile, String? displayName, String? photo, String? firebaseId}) {
+    emit(SocialSignUpProgress());
+    _authRepository.signInUserSignUp(email: email, context: context, mobile:  mobile, displayName:  displayName, photo: photo, firebaseId: firebaseId).then((result) {
+      //success
+      emit(SocialSignUpSuccess(
+        authModel: AuthModel.fromJson(result["data"]),
+      ));
+    }).catchError((e) {
+      //failure
+      emit(SocialSignUpFailure(e.toString()));
+    });
+  }
 }

@@ -98,7 +98,8 @@ class SplashState extends State<Splash> with TickerProviderStateMixin {
       if (currentSettings!.showIntroSlider) {
         Navigator.of(context).pushReplacementNamed(Routes.introSlider);
       } else {
-        Navigator.of(context).pushReplacementNamed(Routes.home, arguments: false);
+        Navigator.of(context).pushReplacementNamed(Routes.requestOtp);
+        // Navigator.of(context).pushReplacementNamed(Routes.home, arguments: false);
       }
     });
   }

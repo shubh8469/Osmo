@@ -223,8 +223,14 @@ class HomeScreenState extends State<HomeScreen> {
                     shrinkWrap: true,
                     physics: const AlwaysScrollableScrollPhysics(),
                     padding: const EdgeInsetsDirectional.only(start: 15.0, end: 15.0, bottom: 10.0),
-                    children: [const LiveWithSearchView(), if (weatherData != null) WeatherDataView(weatherData: weatherData!, weatherLoad: weatherLoad), getSectionList()]),
-              ))),
+                    children: [
+                      // const LiveWithSearchView(),
+                      // if (weatherData != null) WeatherDataView(weatherData: weatherData!, weatherLoad: weatherLoad),
+                      getSectionList()
+                    ]),
+              )
+          )
+      ),
     );
   }
 }

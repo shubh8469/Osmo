@@ -1,0 +1,923 @@
+{
+  "project_info": {
+    "project_number": "574050111035",
+    "firebase_url": "https://eshop-multivendor-cbb14-default-rtdb.firebaseio.com",
+    "project_id": "eshop-multivendor-cbb14",
+    "storage_bucket": "eshop-multivendor-cbb14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:6983516cce9538a90dd61e",
+        "android_client_info": {
+          "package_name": "com.deliveryboy.multivendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-0u3kodngvir009h269kk65r6khsjhcia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deliveryboy.multivendor",
+            "certificate_hash": "d0571a1cf691c8c9b832ba89a215d04136789357"
+          }
+        },
+        {
+          "client_id": "574050111035-849uc1qsskgmhdhb9q54e665j1jpassl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deliveryboy.multivendor",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-u967lr40jqbmuuns2861tok07err8nfm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deliveryboy.multivendor",
+            "certificate_hash": "1e0cb8215bcfabb8072505909e9a75c3de22d0f8"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:b3c7168915eab4610dd61e",
+        "android_client_info": {
+          "package_name": "com.ecartm.cust"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-a6cdqcvnckllrrjp9ebe9pm9s2k343lb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ecartm.cust",
+            "certificate_hash": "cb0b565e43d3490112661db081ed38358173541d"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:7b5d407b2ca1f0330dd61e",
+        "android_client_info": {
+          "package_name": "com.edemand.netsofter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-99mt1a2h8nkgr4ls5k1jffm7g1npk21p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.edemand.netsofter",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:64e9155b7fda4db10dd61e",
+        "android_client_info": {
+          "package_name": "com.edemand.provider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-57n3tjb69abt560tn0o6fubu6lh250f0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.edemand.provider",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:44b52ae897ba1adb0dd61e",
+        "android_client_info": {
+          "package_name": "com.eshopmulti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-r8unnqjcqmbjpaio364lj2qr943ri0t9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eshopmulti",
+            "certificate_hash": "d0571a1cf691c8c9b832ba89a215d04136789357"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:f72864fe36988ac50dd61e",
+        "android_client_info": {
+          "package_name": "com.news.wrteam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:054d1f939520ad170dd61e",
+        "android_client_info": {
+          "package_name": "com.wrteam.admin_eshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-bp7ah7lcg5ih7v6tcv7p0mr5usko0jji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.admin_eshop",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:5128bc1551e0b6050dd61e",
+        "android_client_info": {
+          "package_name": "com.wrteam.ebroker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-n56uskjdjbcqof6bvuevcvoppv1n5q8a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.ebroker",
+            "certificate_hash": "59a60f5854a58fe0a31b112618652940b5282e86"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:6569894e650f30570dd61e",
+        "android_client_info": {
+          "package_name": "com.wrteam.eschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-gmon6a0bko94danvqe75euoanke414rp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.eschool",
+            "certificate_hash": "59a60f5854a58fe0a31b112618652940b5282e86"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:63c42a4b5d03e9850dd61e",
+        "android_client_info": {
+          "package_name": "com.wrteam.eshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-9fljvubened8094i7ff1jg6g84775gp3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.eshop",
+            "certificate_hash": "85b8167a9e967660f1d5e9697170cf56a0d27ea4"
+          }
+        },
+        {
+          "client_id": "574050111035-vt85n7pv74ecfklfnb0i6ka3kfvfc0dk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.eshop",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:dd9835c8120fd73d0dd61e",
+        "android_client_info": {
+          "package_name": "com.wrteam.eshop.deliveryboy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-i6fali9d7t1l76e0ir8pa9ibsarm607q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.eshop.deliveryboy",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:6fa9b4a2bb1c198e0dd61e",
+        "android_client_info": {
+          "package_name": "com.wrteam.flutterquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-0parm7ctlm0m2e9bnjf910peq8loh2is.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.flutterquiz",
+            "certificate_hash": "7cddbe0c7b11fc1e270a9cf58b02147433114f30"
+          }
+        },
+        {
+          "client_id": "574050111035-4ilh3f1t9mrl2b5g72699hp7pea8ab25.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.flutterquiz",
+            "certificate_hash": "1e0cb8215bcfabb8072505909e9a75c3de22d0f8"
+          }
+        },
+        {
+          "client_id": "574050111035-llt9afa52nngpd2091ooajohqqnp3207.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.flutterquiz",
+            "certificate_hash": "d0571a1cf691c8c9b832ba89a215d04136789357"
+          }
+        },
+        {
+          "client_id": "574050111035-smhhs3t14aju11ar50i0c8vjqr143pti.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.flutterquiz",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-uhtrbf4fp7ms830c70uh7fmaefg2fq6f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.flutterquiz",
+            "certificate_hash": "d25c54b2c4f7e42d0b883cbb625098023d7f40ab"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:f54c49c3114768950dd61e",
+        "android_client_info": {
+          "package_name": "com.wrteam.quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-19n8tlm3f6p93ssba1mpvlg18l8k5ca5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.quiz",
+            "certificate_hash": "7cddbe0c7b11fc1e270a9cf58b02147433114f30"
+          }
+        },
+        {
+          "client_id": "574050111035-4tcgiq9uvi9dv12qn17j8d3t3fbhkh6k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrteam.quiz",
+            "certificate_hash": "d0571a1cf691c8c9b832ba89a215d04136789357"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:e12f899e9fac1c3b0dd61e",
+        "android_client_info": {
+          "package_name": "eshop.seller.multivendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-6fss3knlkk3beh8mqialka2mkqmmi4u4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eshop.seller.multivendor",
+            "certificate_hash": "1e0cb8215bcfabb8072505909e9a75c3de22d0f8"
+          }
+        },
+        {
+          "client_id": "574050111035-bviqud7lia5rukk3ltjtp20lmnm3656s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eshop.seller.multivendor",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-rtmjbv4s101kqkb97rj8o7e3qqo4c2sj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eshop.seller.multivendor",
+            "certificate_hash": "d0571a1cf691c8c9b832ba89a215d04136789357"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:7e5e15f15a3eb92b0dd61e",
+        "android_client_info": {
+          "package_name": "in.pmi.doodlecricket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-8mmpls51qfrue9k923cemdn088h8f4ka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.pmi.doodlecricket",
+            "certificate_hash": "0065a82f49dce43db99c5e51ba738f3da7810d2e"
+          }
+        },
+        {
+          "client_id": "574050111035-dfc6f02rs8ej01r46us36p1ad5l7h1tu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.pmi.doodlecricket",
+            "certificate_hash": "7cddbe0c7b11fc1e270a9cf58b02147433114f30"
+          }
+        },
+        {
+          "client_id": "574050111035-o63vi3vpvr1mikqciiso06t07ptf23ec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.pmi.doodlecricket",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:ac2a53ea1baf59b70dd61e",
+        "android_client_info": {
+          "package_name": "wrteam.eshop.multivendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-9c2qufcivaerj3ivkddsp12vcstk4gbo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wrteam.eshop.multivendor",
+            "certificate_hash": "d0571a1cf691c8c9b832ba89a215d04136789357"
+          }
+        },
+        {
+          "client_id": "574050111035-9lkv4oj89qg3ql5pf7qfee0ptjvhcqce.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wrteam.eshop.multivendor",
+            "certificate_hash": "48b5d2d06674132d0872845de4832e7d38be55c3"
+          }
+        },
+        {
+          "client_id": "574050111035-bv775hjb1cfqfs6h713apptigfbfnvqc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wrteam.eshop.multivendor",
+            "certificate_hash": "1e0cb8215bcfabb8072505909e9a75c3de22d0f8"
+          }
+        },
+        {
+          "client_id": "574050111035-u79nsqq3pliihrqjvv87j7s9e6g2cah0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wrteam.eshop.multivendor",
+            "certificate_hash": "7cddbe0c7b11fc1e270a9cf58b02147433114f30"
+          }
+        },
+        {
+          "client_id": "574050111035-ugk30ec925uhnaka0h4djcapd5ck4uka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wrteam.eshop.multivendor",
+            "certificate_hash": "85b8167a9e967660f1d5e9697170cf56a0d27ea4"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:288f5629032c1ce50dd61e",
+        "android_client_info": {
+          "package_name": "wrteam.multivendor.customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-nbq26eps0a059mns0igu9tjbf967ijvg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wrteam.multivendor.customer",
+            "certificate_hash": "cb0b565e43d3490112661db081ed38358173541d"
+          }
+        },
+        {
+          "client_id": "574050111035-o38chs53cq9l47ab72d28ttin0lk2arh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wrteam.multivendor.customer",
+            "certificate_hash": "6f79ce53586d66682ea09450d47d0e5f74e8da3e"
+          }
+        },
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574050111035:android:a9719dd5264df6fe0dd61e",
+        "android_client_info": {
+          "package_name": "wrteam.multivendor.shop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgkDVoVYiGJHLy5Pr5nUq8cvMiMtjlbdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574050111035-11e8vgmodr62b2ah3vhpg68e9ohn69ca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "574050111035-tpkd2pvb2hscimhhbv4r0ikltc4ug5e6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wrteam.ebroker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

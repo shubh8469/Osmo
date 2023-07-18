@@ -23,7 +23,7 @@ Future<void> createDynamicLink(
     socialMetaTagParameters: SocialMetaTagParameters(title: title, imageUrl: Uri.parse(image), description: "test"),
   );
 
-  final ShortDynamicLink shortenedLink = await FirebaseDynamicLinks.instance.buildShortLink(parameters);
+  final ShortDynamicLink shortenedLink = await FirebaseDynamicLinks.instance.buildShortLink(parameters, shortLinkType: ShortDynamicLinkType.unguessable);
   var str = "$title\n\n$appName\n${UiUtils.getTranslatedLabel(context, 'shareMsg')}\n\nAndroid:\n"
       "$androidLink$packageName\n\n iOS:\n$iosLink";
 

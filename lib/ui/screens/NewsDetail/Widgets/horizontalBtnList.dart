@@ -28,6 +28,7 @@ Widget allRowBtn(
     required Function speak,
     required Function stop,
     required Function updateComEnabled}) {
+  print("hheheheheh ${model!.title!}");
   return !isFromBreak
       ? Padding(
           padding: const EdgeInsetsDirectional.only(end: 85),
@@ -60,7 +61,7 @@ Widget allRowBtn(
                 child: setShareBtn(context),
                 onTap: () async {
                   if (await InternetConnectivity.isNetworkAvailable()) {
-                    createDynamicLink(context: context, id: model!.id!, title: model.title!, isVideoId: false, isBreakingNews: false, image: model.image!);
+                    createDynamicLink(context: context, id: model.id!, title: model.title!, isVideoId: false, isBreakingNews: false, image: model.image!);
                   } else {
                     showSnackBar(UiUtils.getTranslatedLabel(context, 'internetmsg'), context);
                   }
@@ -69,7 +70,8 @@ Widget allRowBtn(
               BlocBuilder<BookmarkCubit, BookmarkState>(
                   bloc: context.read<BookmarkCubit>(),
                   builder: (context, bookmarkState) {
-                    bool isBookmark = context.read<BookmarkCubit>().isNewsBookmark(model!.id!);
+                    bool isBookmark = context.read<BookmarkCubit>().isNewsBookmark(model.id!);
+                    print("checkkkkk ---> $isBookmark ${model.id!}");
                     return BlocConsumer<UpdateBookmarkStatusCubit, UpdateBookmarkStatusState>(
                         bloc: context.read<UpdateBookmarkStatusCubit>(),
                         listener: ((context, state) {
@@ -84,6 +86,7 @@ Widget allRowBtn(
                         builder: (context, state) {
                           return InkWell(
                               onTap: () {
+                                print("pressed--> ");
                                 if (context.read<AuthCubit>().getUserId() != "0") {
                                   if (state is UpdateBookmarkStatusInProgress) {
                                     return;

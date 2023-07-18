@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news/utils/strings.dart';
 import '../../data/models/AuthModel.dart';
 import '../../data/repositories/Auth/authRepository.dart';
 
@@ -46,6 +47,21 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  String FirebaseID() {
+    //authDetails is map. keys are isLogin,userId,authProvider,jwtToken
+    final authDetails = _authRepository.getLocalAuthDetails();
+
+    print("fiiiiririir ---> ${authDetails['isLogIn']}");
+
+    return authDetails[FireBaseid];
+
+    // if (authDetails['isLogIn']) {
+    //   emit(Authenticated(authModel: AuthModel.fromJson(authDetails)));
+    // } else {
+    //   emit(Unauthenticated());
+    // }
+  }
+
   String getUserId() {
     if (state is Authenticated) {
       return (state as Authenticated).authModel.id!;
@@ -55,6 +71,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   String getUserName() {
     if (state is Authenticated) {
+      print("naaaammm <-> ${(state as Authenticated).authModel.name!}");
       return (state as Authenticated).authModel.name!;
     }
     return "";
@@ -62,13 +79,23 @@ class AuthCubit extends Cubit<AuthState> {
 
   String getEmail() {
     if (state is Authenticated) {
+      print("emaillll <-> ${(state as Authenticated).authModel.email}");
       return (state as Authenticated).authModel.email!;
     }
     return "";
   }
 
+  // String getFirebaseId() {
+  //   if (state is Authenticated) {
+  //     print("firebaseeeee <-> ${(state as Authenticated).authModel!}");
+  //     return (state as Authenticated).authModel.email!;
+  //   }
+  //   return "";
+  // }
+
   String getProfile() {
     if (state is Authenticated) {
+      print("image----> ${(state as Authenticated).authModel.profile!}");
       return (state as Authenticated).authModel.profile!;
     }
     return "";
@@ -76,6 +103,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   String getMobile() {
     if (state is Authenticated) {
+      print("mobillllle <-> ${(state as Authenticated).authModel.name!}");
       return (state as Authenticated).authModel.mobile!;
     }
     return "";

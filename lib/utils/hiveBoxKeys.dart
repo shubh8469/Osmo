@@ -10,6 +10,7 @@ const String userMobKey = "userMob";
 const String userEmailKey = "userEmail";
 const String userProfileKey = "userProfile";
 const String userRoleKey = "userRole";
+const String firebaseid = "firebaseid";
 const String userStatusKey = "userStatus";
 const String userTypeKey = "Type";
 

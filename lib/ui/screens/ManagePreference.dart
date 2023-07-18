@@ -78,9 +78,17 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
     }
   }
 
+  double? width, height;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(key: _scaffoldKey, appBar: setAppBar(), body: contentView());
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
+    return Scaffold(
+        key: _scaffoldKey,
+        // appBar: setAppBar(),
+        body: contentView()
+    );
   }
 
   setAppBar() {
@@ -93,7 +101,7 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
                 )
               : const SizedBox.shrink(),
           titleSpacing: 0.0,
-          centerTitle: false,
+          centerTitle: true,
           backgroundColor: Colors.transparent,
           title: Padding(
             padding: const EdgeInsetsDirectional.only(start: 0),
@@ -158,20 +166,46 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
                   return ErrorContainerWidget(
                       errorMsg: (state.errorMessage.contains(ErrorMessageKeys.noInternet)) ? UiUtils.getTranslatedLabel(context, 'internetmsg') : state.errorMessage, onRetry: getUserCatData);
                 }
-                return SingleChildScrollView(
-                  padding: const EdgeInsetsDirectional.only(start: 15.0, end: 15.0, bottom: 20.0),
-                  controller: _categoryScrollController,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                          padding: const EdgeInsetsDirectional.only(top: 25.0),
-                          child: GridView.builder(
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 20, mainAxisSpacing: 20),
-                              shrinkWrap: true,
-                              itemCount: (state as CategoryFetchSuccess).category.length,
-                              physics: const ClampingScrollPhysics(),
-                              itemBuilder: (context, index) {
+                return Stack(
+                  children: [
+                    // Image.asset(
+                    //   UiUtils.getImagePath("background.png"),
+                    //   height: double.infinity,
+                    //   width: double.infinity,
+                    //   fit: BoxFit.fill,
+                    // ),
+                    Column(
+                      children: [
+                        SizedBox(height: 25,),
+                        ListTile(
+                          leading: widget.from == 1
+                              ? InkWell(
+                                  onTap: () => Navigator.of(context).pop(),
+                                  splashColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  child: Icon(Icons.arrow_back, color: darkSecondaryColor,)
+                          )
+                              : const SizedBox.shrink(),
+                          // titleSpacing: 0.0,
+                          // centerTitle: true,
+                          // backgroundColor: Colors.transparent,
+                          title: Center(
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.only(start: 0),
+                              child: CustomTextLabel(
+                                text: 'User Profiles',
+                                textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(color: darkSecondaryColor, fontWeight: FontWeight.w600, letterSpacing: 0.5, fontSize: 25),
+                              ),
+                            ),
+                          ),
+                          trailing: SizedBox(width: 10,),
+                          // actions: [skipBtn()],
+                        ),
+                        Padding(
+                          padding:  EdgeInsets.only(top: 45,left: 20),
+                          child: Wrap(
+                            alignment: WrapAlignment.center,
+                              children: List.generate((state as CategoryFetchSuccess).category.length, (index) {
                                 return _buildCategoryContainer(
                                   category: state.category[index],
                                   hasMore: state.hasMore,
@@ -179,26 +213,47 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
                                   index: index,
                                   totalCurrentCategory: state.category.length,
                                 );
-                              })),
-                      nxtBtn()
-                    ],
-                  ),
+                              }),
+                          ),
+                        ),
+                        Spacer(),
+                        nxtBtn(),
+                        SizedBox(height: 25,)
+                      ],
+                    )
+                    // SingleChildScrollView(
+                    //   padding: const EdgeInsetsDirectional.only(start: 15.0, end: 15.0, bottom: 20.0),
+                    //   controller: _categoryScrollController,
+                    //   child: Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.center,
+                    //     children: [
+                    //       Padding(
+                    //           padding: const EdgeInsetsDirectional.only(top: 25.0),
+                    //           child: GridView.builder(
+                    //               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 20, mainAxisSpacing: 20),
+                    //               shrinkWrap: true,
+                    //               itemCount: (state as CategoryFetchSuccess).category.length,
+                    //               physics: const ClampingScrollPhysics(),
+                    //               itemBuilder: (context, index) {
+                    //                 return _buildCategoryContainer2(
+                    //                   category: state.category[index],
+                    //                   hasMore: state.hasMore,
+                    //                   hasMoreCategoryFetchError: state.hasMoreFetchError,
+                    //                   index: index,
+                    //                   totalCurrentCategory: state.category.length,
+                    //                 );
+                    //               })),
+                    //       nxtBtn()
+                    //     ],
+                    //   ),
+                    // )
+                  ],
                 );
               });
         });
   }
 
-  selectCatTxt() {
-    return Transform(
-      transform: Matrix4.translationValues(-50.0, 0.0, 0.0),
-      child: CustomTextLabel(
-        text: 'sel_pref_cat',
-        textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(color: UiUtils.getColorScheme(context).primaryContainer, fontWeight: FontWeight.w100, letterSpacing: 0.5),
-      ),
-    );
-  }
-
-  _buildCategoryContainer({
+  _buildCategoryContainer2({
     required CategoryModel category,
     required int index,
     required int totalCurrentCategory,
@@ -254,7 +309,7 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
               Column(
                 children: [
                   Align(
-                      //checkbox
+                    //checkbox
                       alignment: Alignment.topRight,
                       child: Container(
                         height: 20,
@@ -266,10 +321,10 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
                         ),
                         child: selectedChoices.contains(category.id)
                             ? const Icon(
-                                Icons.check_rounded,
-                                color: secondaryColor,
-                                size: 20,
-                              )
+                          Icons.check_rounded,
+                          color: secondaryColor,
+                          size: 20,
+                        )
                             : null,
                       )),
                   const Spacer(),
@@ -303,6 +358,161 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
         ));
   }
 
+  _buildCategoryContainer({
+    required CategoryModel category,
+    required int index,
+    required int totalCurrentCategory,
+    required bool hasMoreCategoryFetchError,
+    required bool hasMore,
+  }) {
+    if (index == totalCurrentCategory - 1 && index != 0) {
+      //check if hasMore
+      if (hasMore) {
+        if (hasMoreCategoryFetchError) {
+          return const SizedBox.shrink();
+        } else {
+          return Center(child: Padding(padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0), child: showCircularProgress(true, Theme.of(context).primaryColor)));
+        }
+      }
+    }
+    return GestureDetector(
+      // onTap: () {
+      //
+      //   // Navigator.of(context).pushNamed(Routes.subCat, arguments: {"catId": category.id, "catName": category.categoryName});
+      // },
+
+      onTap: () {
+        _checks[index] = !_checks[index];
+        if (selectedChoices.contains(category.id)) {
+          print("------> ${selectedChoices}");
+          selectedChoices.remove(category.id);
+          setState(() {});
+          print("------> ${selectedChoices}");
+        } else {
+          selectedChoices.add(category.id!);
+          setState(() {});
+          print("------> ${selectedChoices}");
+        }
+        if (selectedChoices.isEmpty) {
+          setState(() {
+            selectedChoices.add("0");
+          });
+          print("------> ${selectedChoices}");
+        } else {
+          if (selectedChoices.contains("0")) {
+            selectedChoices = List.from(selectedChoices)..remove("0");
+            print("------> ${selectedChoices}");
+          }
+        }
+      },
+
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          // height: 50,
+          decoration: BoxDecoration(
+              color: Colors.white, //selectedChoices.contains(category.id) ? Colors.black54 : Colors.white,
+              borderRadius: BorderRadius.circular(70)
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  // color: Colors.blue,
+                  child: ClipOval(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: FadeInImage(
+                        fadeInDuration: const Duration(milliseconds: 150),
+                        image: NetworkImage(
+                          category.image!,
+                        ),
+                        // width: width! * 0.13,
+                        // height: height! * 0.03,
+                        width: 40,
+                        height: 40,
+                        fit: BoxFit.contain,
+                        placeholder: AssetImage(UiUtils.getImagePath("placeholder.png")),
+                        imageErrorBuilder: ((context, error, stackTrace) {
+                          return Image.asset(
+                            UiUtils.getImagePath("placeholder.png"),
+                            width: 40,
+                            height: 40,
+                            fit: BoxFit.contain,
+                          );
+                        }),
+                        placeholderErrorBuilder: ((context, error, stackTrace) {
+                          return Image.asset(
+                            UiUtils.getImagePath("placeholder.png"),
+                            width: width ?? 100,
+                            height: height ?? 100,
+                            fit: BoxFit.contain,
+                          );
+                        })),
+                  ),
+                ),
+                SizedBox(width: 5,),
+                Padding(
+                  padding: const EdgeInsets.only(top: 3),
+                  child: Text(
+                    category.categoryName!,
+                    style: TextStyle(fontSize: 16, color: Colors.black /* selectedChoices.contains(category.id) ? Colors.white : Colors.black */, fontWeight: FontWeight.bold
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                  ),
+                ),
+                SizedBox(width: 10,)
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+
+  selectCatTxt() {
+    return Transform(
+      transform: Matrix4.translationValues(-50.0, 0.0, 0.0),
+      child: CustomTextLabel(
+        text: 'sel_pref_cat',
+        textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(color: UiUtils.getColorScheme(context).primaryContainer, fontWeight: FontWeight.w100, letterSpacing: 0.5),
+      ),
+    );
+  }
+
+
+  // Widget Image(CategoryModel category) {
+  //   return FadeInImage(
+  //                 fadeInDuration: const Duration(milliseconds: 150),
+  //                 image: NetworkImage(
+  //                   category.image!,
+  //                 ),
+  //                 width: width ?? 100,
+  //                 height: height ?? 100,
+  //                 fit: BoxFit.contain,
+  //                 placeholder: AssetImage(UiUtils.getImagePath("placeholder.png")),
+  //                 imageErrorBuilder: ((context, error, stackTrace) {
+  //                   return Image.asset(
+  //                     UiUtils.getImagePath("placeholder.png"),
+  //                     width: width ?? 100,
+  //                     height: height ?? 100,
+  //                     fit: BoxFit.contain,
+  //                   );
+  //                 }),
+  //                 placeholderErrorBuilder: ((context, error, stackTrace) {
+  //                   return Image.asset(
+  //                     UiUtils.getImagePath("placeholder.png"),
+  //                     width: width ?? 100,
+  //                     height: height ?? 100,
+  //                     fit: BoxFit.contain,
+  //                   );
+  //                 }));
+  // }
+
   nxtBtn() {
     return BlocConsumer<SetUserPrefCatCubit, SetUserPrefCatState>(
         bloc: context.read<SetUserPrefCatCubit>(),
@@ -322,9 +532,9 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
             child: InkWell(
                 child: Container(
                   height: 55.0,
-                  width: MediaQuery.of(context).size.width * 0.95,
+                  width: MediaQuery.of(context).size.width * 0.77,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(color: Theme.of(context).primaryColor, borderRadius: BorderRadius.circular(15.0)),
+                  decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(15.0)),
                   child: (state is SetUserPrefCatFetchInProgress)
                       ? showCircularProgress(true, secondaryColor)
                       : CustomTextLabel(

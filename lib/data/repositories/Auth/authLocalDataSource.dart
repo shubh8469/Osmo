@@ -77,6 +77,14 @@ class AuthLocalDataSource {
     Hive.box(authBoxKey).put(userRoleKey, role);
   }
 
+  Future<void> setFirebaseId(String? id) async {
+    Hive.box(authBoxKey).put(firebaseid, id);
+  }
+
+  String? getFirebaseId() {
+    return Hive.box(authBoxKey).get(firebaseid, defaultValue: "");
+  }
+
   Future<void> changeAuthStatus(bool? authStatus) async {
     Hive.box(authBoxKey).put(isLogInKey, authStatus);
   }

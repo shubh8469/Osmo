@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:news/cubits/Auth/soicalSignUpCubit.dart';
 import 'package:news/ui/styles/colors.dart';
 import 'package:news/ui/widgets/customTextLabel.dart';
@@ -141,7 +142,16 @@ class VerifyOtpState extends State<VerifyOtp> {
             },
             builder: (context, state) {
               return Stack(
-                children: <Widget>[SafeArea(child: showContent()), if (state is SocialSignUpProgress) Center(child: showCircularProgress(true, Theme.of(context).primaryColor))],
+                children: <Widget>[
+                  // Image.asset(
+                  //   UiUtils.getImagePath("background.png"),
+                  //   height: MediaQuery.of(context).size.height,
+                  //   width: MediaQuery.of(context).size.width,
+                  //   fit: BoxFit.fill,
+                  // ),
+                  SafeArea(
+                      child: showContent()
+                  ), if (state is SocialSignUpProgress) Center(child: showCircularProgress(true, Theme.of(context).primaryColor))],
               );
             }));
   }
@@ -154,10 +164,35 @@ class VerifyOtpState extends State<VerifyOtp> {
           child: Form(
               key: _formkey,
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-                const SizedBox(height: 50),
+                Align(
+                  //backButton
+                    alignment: Alignment.topCenter,
+                    child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        splashColor: Colors.transparent,
+                        child: Text("OSMO KIDS" , style: GoogleFonts.aBeeZee(color: Colors.grey.shade800, fontSize: MediaQuery.of(context).size.height * 0.035, fontWeight: FontWeight.w800),)
+                    )),
+
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+
                 otpVerifySet(),
+
+                SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+
+                Container(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      UiUtils.getImagePath("splash_Icon.png"),
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.42,
+                      fit: BoxFit.fill,
+                    )
+                ),
+
                 otpSentSet(),
-                mblSet(),
+                // mblSet(),
                 otpFillSet(),
                 buildTimer(),
                 submitBtn(),
@@ -169,22 +204,30 @@ class VerifyOtpState extends State<VerifyOtp> {
     return Align(
         alignment: Alignment.center,
         child: CustomTextLabel(
-          text: 'otpVerifyLbl',
-          textStyle: Theme.of(context).textTheme.headlineSmall?.copyWith(color: Theme.of(context).primaryColor, fontWeight: FontWeight.w800, letterSpacing: 0.5),
+          text: 'Verification',
+          textStyle: Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.black, fontWeight: FontWeight.w800, letterSpacing: 0.5),
           textAlign: TextAlign.center,
         ));
   }
 
   otpSentSet() {
     return Padding(
-      padding: const EdgeInsets.only(top: 55.0),
-      child: CustomTextLabel(
-        text: 'otpSentLbl',
-        textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
-              color: UiUtils.getColorScheme(context).primaryContainer,
-              fontWeight: FontWeight.w600,
-            ),
-      ),
+      padding:  EdgeInsets.only(top: 55.0, left: MediaQuery.of(context).size.width * 0.15, right: MediaQuery.of(context).size.width * 0.15),
+      child: Text(
+        'Enter the verification code we just sent to your Phone',
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+          color: UiUtils.getColorScheme(context).primaryContainer,
+          fontWeight: FontWeight.w600,
+        ),
+        // textAlign: textAlign,
+      )
+      // child: CustomTextLabel(
+      //   text: 'Enter the verification code we just sent',
+      //   textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
+      //         color: UiUtils.getColorScheme(context).primaryContainer,
+      //         fontWeight: FontWeight.w600,
+      //       ),
+      // ),
     );
   }
 
@@ -223,7 +266,7 @@ class VerifyOtpState extends State<VerifyOtp> {
   buildTimer() {
     return Container(
       alignment: Alignment.center,
-      padding: const EdgeInsets.only(top: 60.0),
+      padding: const EdgeInsets.only(top: 25.0),
       child: secondsRemaining != 0
           ? Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -254,15 +297,16 @@ class VerifyOtpState extends State<VerifyOtp> {
 
   submitBtn() {
     return Container(
+      alignment: Alignment.center,
         padding: const EdgeInsets.only(top: 30.0),
         child: InkWell(
             child: Container(
-              height: 55.0,
-              width: MediaQuery.of(context).size.width * 0.9,
+              height: 49.0,
+              width: MediaQuery.of(context).size.width * 0.75,
               alignment: Alignment.center,
-              decoration: BoxDecoration(color: Theme.of(context).primaryColor, borderRadius: BorderRadius.circular(7.0)),
+              decoration: BoxDecoration(color:Colors.black, borderRadius: BorderRadius.circular(13)),
               child: CustomTextLabel(
-                text: 'submitBtn',
+                text: 'Verify',
                 textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(color: secondaryColor, fontWeight: FontWeight.w600, fontSize: 21, letterSpacing: 0.6),
               ),
             ),
@@ -270,12 +314,14 @@ class VerifyOtpState extends State<VerifyOtp> {
               FocusScope.of(context).unfocus(); //dismiss keyboard
 
               if (validateAndSave()) {
+                print("atleast Here ");
                 if (await InternetConnectivity.isNetworkAvailable()) {
                   context.read<SocialSignUpCubit>().socialSignUpUser(authProvider: AuthProvider.mobile, verifiedId: widget.verifyId, otp: otp, context: context);
                 } else {
                   showSnackBar(UiUtils.getTranslatedLabel(context, 'internetmsg'), context);
                 }
               }
+
             }));
   }
 

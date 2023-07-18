@@ -23,14 +23,7 @@ class CustomNetworkImage extends StatelessWidget {
         fit: fit ?? BoxFit.contain,
         placeholder: isVideo! ? AssetImage(UiUtils.getImagePath("Placeholder_video.jpg")) : AssetImage(UiUtils.getImagePath("placeholder.png")),
         imageErrorBuilder: ((context, error, stackTrace) {
-          return isVideo!
-              ? Image.asset(
-                  UiUtils.getImagePath("Placeholder_video.jpg"),
-                  width: width ?? 100,
-                  height: height ?? 100,
-                  fit: fit ?? BoxFit.contain,
-                )
-              : Image.asset(
+          return Image.asset(
                   UiUtils.getImagePath("placeholder.png"),
                   width: width ?? 100,
                   height: height ?? 100,

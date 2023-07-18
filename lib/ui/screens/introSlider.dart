@@ -71,7 +71,8 @@ class GettingStartedScreenState extends State<IntroSliderScreen> with TickerProv
 
   gotoNext() {
     context.read<SettingsCubit>().changeShowIntroSlider(false);
-    Navigator.of(context).pushReplacementNamed(Routes.login);
+    Navigator.of(context).pushReplacementNamed(Routes.requestOtp);
+    // Navigator.of(context).pushReplacementNamed(Routes.login);
   }
 
   void onPageChanged(int index) {

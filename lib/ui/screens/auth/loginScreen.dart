@@ -162,6 +162,12 @@ class LoginScreenState extends State<LoginScreen> with SingleTickerProviderState
               } else if (widget.isFromApp == true) {
                 Navigator.pop(context);
               } else {
+                // print("---->> ${state.authModel.name}");
+                if(state.authModel.name!.isEmpty || state.authModel.name == null){
+                  print("sggsgsgs");
+                  Navigator.pushNamedAndRemoveUntil(context, Routes.signUp, (route) => false);
+                }
+                else
                 Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
               }
             }
@@ -342,7 +348,7 @@ class LoginScreenState extends State<LoginScreen> with SingleTickerProviderState
                   child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Column(
-                  children: [
+                  children: <Widget>[
                     signUpTxt(),
                     SetName(currFocus: nameFocus, nextFocus: emailSFocus, nameC: sNameC!, name: sNameC!.text),
                     SetEmail(currFocus: emailSFocus, nextFocus: passSFocus, emailC: sEmailC!, email: sEmailC!.text, topPad: 20),
@@ -489,7 +495,18 @@ class LoginScreenState extends State<LoginScreen> with SingleTickerProviderState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: showContent(),
+      body: Stack(
+        children: [
+          // Image.asset(
+          //   UiUtils.getImagePath("background.png"),
+          //   height: MediaQuery.of(context).size.height,
+          //   width: MediaQuery.of(context).size.width,
+          //   fit: BoxFit.fill,
+          // ),
+          showContent(),
+        ],
+      ),
+      // body: showContent(),
     );
   }
 }

@@ -9,6 +9,7 @@ const String STATUS = "status";
 const String FCM_ID = "fcm_id";
 const String PROFILE = "profile";
 const String ROLE = "role";
+const String FireBaseid = "firebaseid";
 const String MOBILE = "mobile";
 const String ACCESS_KEY = "access_key";
 const String FIREBASE_ID = "firebase_id";

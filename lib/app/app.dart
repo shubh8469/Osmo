@@ -287,7 +287,7 @@ class _MyAppState extends State<MyApp> {
               navigatorKey: UiUtils.rootNavigatorKey,
               theme: appThemeData[currentTheme],
               debugShowCheckedModeBanner: false,
-              initialRoute: Routes.splash,
+              initialRoute: Routes.splash,//Routes.splash,
               onGenerateRoute: Routes.onGenerateRouted,
               builder: (context, widget) {
                 return ScrollConfiguration(

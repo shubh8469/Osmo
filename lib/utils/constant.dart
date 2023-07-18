@@ -1,6 +1,6 @@
 //Please add your admin panel url here and make sure you do not add '/' at the end of the url
 
-const String baseUrl = "enter_your_url_here";
+const String baseUrl = "https://osmo.netsofters.net/";
 const String databaseUrl = "$baseUrl/api/";
 
 //Please add your jwt key here that you have added in admin panel system configuration setting
@@ -16,6 +16,9 @@ const int limitOfAPIData = 10;
 
 //weather data enable
 const bool isWeatherDataShow = true;
+
+String firebaseId = '';
+String mobile = '';
 
 //Facebook Login enable/disable
 const bool fblogInEnabled = true;
@@ -42,6 +45,6 @@ const String androidLbl = 'Android:';
 const String iosLbl = 'iOS:';
 const String appStoreId = '9876543120'; //Your Appstore app Id //used for Rating & sharing
 
-const String deepLinkUrlPrefix = 'your_link'; //example - https://xxx.page.link - Your dynamic link from Firebase
+const String deepLinkUrlPrefix = 'https://varunbe.page.link '; //example - https://varunbe.page.link - Your dynamic link from Firebase
 const String deepLinkName = 'your_deeplink_name';//example - xxx.com - Your domain name
  

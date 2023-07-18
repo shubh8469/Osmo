@@ -47,7 +47,7 @@ class BookmarkScreenState extends State<BookmarkScreen> {
   }
 
   void hasMoreUserNotiScrollListener() {
-    if (_controller.position.maxScrollExtent == _controller.offset) {
+    if (_controller.offset >= _controller.position.maxScrollExtent && !_controller.position.outOfRange) {
       if (context.read<BookmarkCubit>().hasMoreBookmark()) {
         context.read<BookmarkCubit>().getMoreBookmark(context: context, langId: context.read<AppLocalizationCubit>().state.id, userId: context.read<AuthCubit>().getUserId());
       }
@@ -63,55 +63,114 @@ class BookmarkScreenState extends State<BookmarkScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: setCustomAppBar(height: 45, isBackBtn: true, label: 'bookmarkLbl', context: context, horizontalPad: 15, isConvertText: true),
-        body: Padding(
-            padding: const EdgeInsetsDirectional.only(bottom: 10.0, start: 0.0, end: 0.0),
-            child: context.read<AuthCubit>().getUserId() != "0"
-                ? BlocBuilder<BookmarkCubit, BookmarkState>(
-                    builder: (context, state) {
-                      if (state is BookmarkFetchSuccess && state.bookmark.isNotEmpty) {
-                        return Padding(
-                          padding: const EdgeInsetsDirectional.only(start: 15.0, end: 15.0, top: 10.0, bottom: 10.0),
-                          child: RefreshIndicator(
-                            onRefresh: () async {
-                              getBookMark();
-                            },
-                            child: ListView.builder(
-                                controller: _controller,
-                                physics: const AlwaysScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: state.bookmark.length,
-                                itemBuilder: (context, index) {
-                                  return _buildBookmarkContainer(
-                                    model: state.bookmark[index],
-                                    hasMore: state.hasMore,
-                                    hasMoreBookFetchError: state.hasMoreFetchError,
-                                    index: index,
-                                    totalCurrentBook: state.bookmark.length,
+        // appBar: setCustomAppBar(height: 45, isBackBtn: true, label: 'bookmarkLbl', context: context, horizontalPad: 15, isConvertText: true),
+        body: Stack(
+          children: [
+            // Image.asset(
+            //   UiUtils.getImagePath("background.png"),
+            //   height: MediaQuery.of(context).size.height,
+            //   width: MediaQuery.of(context).size.width,
+            //   fit: BoxFit.fill,
+            // ),
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 25,),
+                  ListTile(
+                    leading: InkWell(
+                        onTap: () => Navigator.of(context).pop(),
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        child: Icon(Icons.arrow_back, color: darkSecondaryColor,)
+                    ),
+                    // titleSpacing: 0.0,
+                    // centerTitle: true,
+                    // backgroundColor: Colors.transparent,
+                    title: Center(
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.only(start: 0),
+                        child: CustomTextLabel(
+                          text: 'Favourites Articles',
+                          textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(color: darkSecondaryColor, fontWeight: FontWeight.w600, letterSpacing: 0.5, fontSize: 25),
+                        ),
+                      ),
+                    ),
+                    trailing: SizedBox(width: 10,),
+                    // actions: [skipBtn()],
+                  ),
+                  Padding(
+                      padding: const EdgeInsetsDirectional.only( start: 0.0, end: 0.0),
+                      child: context.read<AuthCubit>().getUserId() != "0"
+                          ? BlocBuilder<BookmarkCubit, BookmarkState>(
+                              builder: (context, state) {
+                                if (state is BookmarkFetchSuccess && state.bookmark.isNotEmpty) {
+                                  return Padding(
+                                    padding: const EdgeInsetsDirectional.only(start: 15.0, end: 15.0, top: 10.0, bottom: 10.0),
+                                    child: RefreshIndicator(
+                                      onRefresh: () async {
+                                        getBookMark();
+                                      },
+                                      // child: ListView.builder(
+                                      //     controller: _controller,
+                                      //     physics: const AlwaysScrollableScrollPhysics(),
+                                      //     shrinkWrap: true,
+                                      //     itemCount: state.bookmark.length,
+                                      //     itemBuilder: (context, index) {
+                                      //       return _buildBookmarkContainer(
+                                      //         model: state.bookmark[index],
+                                      //         hasMore: state.hasMore,
+                                      //         hasMoreBookFetchError: state.hasMoreFetchError,
+                                      //         index: index,
+                                      //         totalCurrentBook: state.bookmark.length,
+                                      //       );
+                                      //     }),
+                                      child: GridView.count(
+                                          controller: _controller,
+                                          crossAxisCount: 2,
+                                          mainAxisSpacing: MediaQuery.of(context).size.height / 40,
+                                          crossAxisSpacing: MediaQuery.of(context).size.width / 40,
+                                          childAspectRatio: 0.8,
+                                          physics: const AlwaysScrollableScrollPhysics(),
+                                        padding: EdgeInsets.only(top: 25, bottom: MediaQuery.of(context).size.height / 10.0, left: 10, right: 10),
+                                          shrinkWrap: true,
+                                          children: List.generate(
+                                              state.bookmark.length, (index) {
+                                            return _buildBookmarkContainer(
+                                              model: state.bookmark[index],
+                                              hasMore: state.hasMore,
+                                              hasMoreBookFetchError: state.hasMoreFetchError,
+                                              index: index,
+                                              totalCurrentBook: state.bookmark.length,
+                                            );
+                                              }),
+                                      ),
+                                    ),
                                   );
-                                }),
-                          ),
-                        );
-                      } else if (state is BookmarkFetchFailure || ((state is! BookmarkFetchInProgress))) {
-                        if (state is BookmarkFetchFailure) {
-                          return ErrorContainerWidget(
-                              errorMsg: (state.errorMessage.contains(ErrorMessageKeys.noInternet)) ? UiUtils.getTranslatedLabel(context, 'internetmsg') : state.errorMessage, onRetry: getBookMark());
-                        } else {
-                          return const Center(
-                              child: CustomTextLabel(
-                            text: 'bookmarkNotAvail',
-                            textAlign: TextAlign.center,
-                          ));
-                        }
-                      }
-                      //default/Processing state
-                      return Padding(padding: const EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10.0), child: shimmerNewsList(context));
-                    },
-                  )
-                : loginMsg()));
+                                } else if (state is BookmarkFetchFailure || ((state is! BookmarkFetchInProgress))) {
+                                  if (state is BookmarkFetchFailure) {
+                                    return ErrorContainerWidget(
+                                        errorMsg: (state.errorMessage.contains(ErrorMessageKeys.noInternet)) ? UiUtils.getTranslatedLabel(context, 'internetmsg') : state.errorMessage, onRetry: getBookMark());
+                                  } else {
+                                    return const Center(
+                                        child: CustomTextLabel(
+                                      text: 'bookmarkNotAvail',
+                                      textAlign: TextAlign.center,
+                                    ));
+                                  }
+                                }
+                                //default/Processing state
+                                return Padding(padding: const EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10.0), child: shimmerNewsList(context));
+                              },
+                            )
+                          : loginMsg()),
+                ],
+              ),
+            ),
+          ],
+        ));
   }
 
-  _buildBookmarkContainer({
+  _buildBookmarkContainer2({
     required NewsModel model,
     required int index,
     required int totalCurrentBook,
@@ -182,6 +241,100 @@ class BookmarkScreenState extends State<BookmarkScreen> {
                                     child: Text(
                                       model.title!,
                                       style: Theme.of(context).textTheme.titleMedium?.copyWith(color: secondaryColor, fontWeight: FontWeight.w600, fontSize: 15, height: 1.0, letterSpacing: 0.5),
+                                      maxLines: 3,
+                                      softWrap: true,
+                                      overflow: TextOverflow.ellipsis,
+                                    )),
+                              ],
+                            ),
+                          )),
+                    ),
+                  ),
+                )),
+          ],
+        ),
+        onTap: () async {
+          Navigator.of(context).pushNamed(Routes.newsDetails, arguments: {"model": model, "isFromBreak": false, "fromShowMore": false});
+        },
+      ),
+    );
+  }
+
+  _buildBookmarkContainer({
+    required NewsModel model,
+    required int index,
+    required int totalCurrentBook,
+    required bool hasMoreBookFetchError,
+    required bool hasMore,
+  }) {
+    if (index == totalCurrentBook - 1 && index != 0) {
+      //check if hasMore
+      if (hasMore) {
+        if (hasMoreBookFetchError) {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
+              child: IconButton(
+                  onPressed: () {
+                    context.read<BookmarkCubit>().getMoreBookmark(context: context, langId: context.read<AppLocalizationCubit>().state.id, userId: context.read<AuthCubit>().getUserId());
+                  },
+                  icon: Icon(
+                    Icons.error,
+                    color: Theme.of(context).primaryColor,
+                  )),
+            ),
+          );
+        } else {
+          return Center(child: Padding(padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0), child: showCircularProgress(true, Theme.of(context).primaryColor)));
+        }
+      }
+    }
+
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(top: 15.0),
+      child: InkWell(
+        child: Stack(
+          children: [
+            Container(
+              // color: Col,
+              child: ClipRRect(borderRadius: BorderRadius.circular(10.0),
+                  child: CustomNetworkImage(networkImageUrl: model.image!, width: double.maxFinite, fit: BoxFit.fill, isVideo: false)),
+            ),
+            Positioned.directional(
+                textDirection: Directionality.of(context),
+                bottom: 0,
+                start: 0,
+                end: 0,
+                height: MediaQuery.of(context).size.height * 0.12,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                  child: ShaderMask(
+                    shaderCallback: (bounds) {
+                      return LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [darkSecondaryColor.withOpacity(0.01), darkSecondaryColor.withOpacity(0.75)])
+                          .createShader(bounds);
+                    },
+                    blendMode: BlendMode.overlay,
+                    child: Container(
+                      height: 60,
+                      width: double.infinity,
+                      color: Colors.white,
+                      child: Padding(
+                          padding: const EdgeInsetsDirectional.only(start: 10, end: 10),
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  UiUtils.convertToAgo(context, DateTime.parse(model.date!), 0)!,
+                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w600),
+                                ),
+                                Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Text(
+                                      model.title!,
+                                      style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 15, height: 1.0, letterSpacing: 0.5),
                                       maxLines: 3,
                                       softWrap: true,
                                       overflow: TextOverflow.ellipsis,

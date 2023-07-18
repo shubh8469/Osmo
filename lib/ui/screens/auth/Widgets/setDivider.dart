@@ -7,15 +7,15 @@ import 'package:news/utils/uiUtils.dart';
 //set divider on text
 setDividerOr(BuildContext context) {
   return Padding(
-      padding: const EdgeInsetsDirectional.only(top: 30.0),
+      padding: const EdgeInsetsDirectional.only(top: 15.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomTextLabel(
-            text: 'orLbl',
+            text: 'Or',
             textStyle: Theme.of(context).textTheme.titleMedium?.merge(TextStyle(
                   color: UiUtils.getColorScheme(context).primaryContainer.withOpacity(0.7),
-                  fontSize: 12.0,
+                  fontSize: 20.0,
                 )),
           ),
         ],

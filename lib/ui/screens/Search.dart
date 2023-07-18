@@ -325,7 +325,7 @@ class SearchState extends State<Search> with TickerProviderStateMixin {
                 ),
               );
             } else {
-              return const Column();
+              return Column();
             }
           });
     } else if (buildResult) {

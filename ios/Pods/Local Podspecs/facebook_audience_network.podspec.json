@@ -1,0 +1,32 @@
+{
+  "name": "facebook_audience_network",
+  "version": "0.0.1",
+  "summary": "Facebook Audience Network plugin for Flutter application",
+  "description": "Facebook Audience Network plugin for Flutter application",
+  "homepage": "http://example.com",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "Dreamsoft Innovations Private Limited": "support@dreamsoftin.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*",
+  "public_header_files": "Classes/**/*.h",
+  "dependencies": {
+    "Flutter": [
+
+    ],
+    "FBAudienceNetwork": [
+      "~> 6.3"
+    ]
+  },
+  "static_framework": true,
+  "swift_versions": "4.0",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "swift_version": "4.0"
+}
