@@ -1299,7 +1299,7 @@ class UserProfileScreenState extends State<UserProfileScreen> {
                   textAlign: TextAlign.center,
                 ),
                 onTap: () {
-                  Navigator.of(context).pushNamed(Routes.login);
+                  Navigator.of(context).pushNamed(Routes.requestOtp);
                 }),
           ],
         ));

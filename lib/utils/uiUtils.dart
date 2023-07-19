@@ -135,7 +135,7 @@ class UiUtils {
         contxt.read<BookmarkCubit>().resetState();
         contxt.read<LikeAndDisLikeCubit>().resetState();
         contxt.read<AuthCubit>().signOut(AuthProvider.values[i]).then((value) {
-          Navigator.of(contxt).pushNamedAndRemoveUntil(Routes.login, (route) => false);
+          Navigator.of(contxt).pushNamedAndRemoveUntil(Routes.requestOtp, (route) => false);
         });
       }
     }

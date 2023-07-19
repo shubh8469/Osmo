@@ -463,7 +463,8 @@ class _SignUpState extends State<SignUp> {
           // profile = context.read<AuthCubit>().getProfile();
           if(navigate) {
             print("herrrr");
-            Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
+            Navigator.of(context).pushNamedAndRemoveUntil(Routes.managePref, (route) => false, arguments: {"from": 2});
+            // Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
           }
         }
         if (state is UpdateUserFetchFailure) {

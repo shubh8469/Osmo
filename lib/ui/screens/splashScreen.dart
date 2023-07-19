@@ -20,6 +20,8 @@ import 'package:news/cubits/appSystemSettingCubit.dart';
 import 'package:news/utils/hiveBoxKeys.dart';
 import 'package:news/ui/widgets/Slideanimation.dart';
 
+import '../../cubits/Auth/authCubit.dart';
+
 class Splash extends StatefulWidget {
   const Splash({super.key});
 
@@ -98,8 +100,14 @@ class SplashState extends State<Splash> with TickerProviderStateMixin {
       if (currentSettings!.showIntroSlider) {
         Navigator.of(context).pushReplacementNamed(Routes.introSlider);
       } else {
-        Navigator.of(context).pushReplacementNamed(Routes.requestOtp);
-        // Navigator.of(context).pushReplacementNamed(Routes.home, arguments: false);
+        if(context.read<AuthCubit>().getUserName() == '' || context.read<AuthCubit>().getUserName() == null){
+          Navigator.of(context).pushReplacementNamed(Routes.requestOtp);
+        }
+        else{
+
+          Navigator.of(context).pushNamed(Routes.newsDetails, arguments: {"isFromBreak": false, "fromShowMore": false});
+          // Navigator.of(context).pushReplacementNamed(Routes.home, arguments: false);
+        }
       }
     });
   }

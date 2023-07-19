@@ -254,7 +254,7 @@ class BookmarkScreenState extends State<BookmarkScreen> {
           ],
         ),
         onTap: () async {
-          Navigator.of(context).pushNamed(Routes.newsDetails, arguments: {"model": model, "isFromBreak": false, "fromShowMore": false});
+          Navigator.of(context).pushNamed(Routes.newsDetails, arguments: {"model": model, "isFromBreak": false, "fromShowMore": false, "from": "bookmark"});
         },
       ),
     );
@@ -348,7 +348,7 @@ class BookmarkScreenState extends State<BookmarkScreen> {
           ],
         ),
         onTap: () async {
-          Navigator.of(context).pushNamed(Routes.newsDetails, arguments: {"model": model, "isFromBreak": false, "fromShowMore": false});
+          Navigator.of(context).pushNamed(Routes.newsDetails, arguments: {"model": model, "isFromBreak": false, "fromShowMore": false, "from": "bookmark"});
         },
       ),
     );
@@ -381,7 +381,7 @@ class BookmarkScreenState extends State<BookmarkScreen> {
                   textAlign: TextAlign.center,
                 ),
                 onTap: () {
-                  Navigator.of(context).pushNamed(Routes.login);
+                  Navigator.of(context).pushNamed(Routes.requestOtp);
                 }),
           ],
         ));

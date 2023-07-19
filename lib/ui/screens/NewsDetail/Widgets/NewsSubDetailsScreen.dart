@@ -79,6 +79,7 @@ class NewsSubDetailsState extends State<NewsSubDetails> {
 
   @override
   void initState() {
+
     super.initState();
     newsModel = widget.model;
     getComments();
@@ -416,16 +417,10 @@ class NewsSubDetailsState extends State<NewsSubDetails> {
         child: Container(
           color: Colors.grey.shade200,
           child: Padding(//bottom: height! * 0.1,
-            padding: EdgeInsets.only( top: height! * 0.03 , left: width! * 0.02, right: width! * 0.02),
+            padding: EdgeInsets.only(top: height! * 0.01 , left: width! * 0.02, right: width! * 0.02),
             child: Column(
                 children: [
               ListTile(
-                // leading: InkWell(
-                //     onTap: () => Navigator.of(context).pop(),
-                //     splashColor: Colors.transparent,
-                //     highlightColor: Colors.transparent,
-                //     child: Icon(Icons.arrow_back, color: darkSecondaryColor,)
-                // ),
                 leading: Image.asset(UiUtils.getImagePath("osmosplash.png"), height: 40, width: 50,),
                 title: Center(
                   child: Padding(
@@ -472,7 +467,7 @@ class NewsSubDetailsState extends State<NewsSubDetails> {
               Visibility(
                 visible: showw,
                 child: Expanded(
-                  flex: (Platform.isAndroid) ? 2 : 9,
+                  flex: 2,
                   child: Container(
                     // height: 50,
                     // width: 10,
@@ -483,7 +478,9 @@ class NewsSubDetailsState extends State<NewsSubDetails> {
                       children: [
 
                         InkWell(
-                          onTap: (){},
+                          onTap: (){
+                            Navigator.of(context).pushNamed(Routes.managePref, arguments: {"from": 2});
+                          },
 
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

@@ -193,7 +193,7 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
                             child: Padding(
                               padding: const EdgeInsetsDirectional.only(start: 0),
                               child: CustomTextLabel(
-                                text: 'User Profiles',
+                                text: 'Select Preference',
                                 textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(color: darkSecondaryColor, fontWeight: FontWeight.w600, letterSpacing: 0.5, fontSize: 25),
                               ),
                             ),
@@ -411,7 +411,7 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
         child: Container(
           // height: 50,
           decoration: BoxDecoration(
-              color: Colors.white, //selectedChoices.contains(category.id) ? Colors.black54 : Colors.white,
+              color: selectedChoices.contains(category.id) ? Colors.black : Colors.white,
               borderRadius: BorderRadius.circular(70)
           ),
           child: Padding(
@@ -436,11 +436,14 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
                         fit: BoxFit.contain,
                         placeholder: AssetImage(UiUtils.getImagePath("placeholder.png")),
                         imageErrorBuilder: ((context, error, stackTrace) {
-                          return Image.asset(
-                            UiUtils.getImagePath("placeholder.png"),
-                            width: 40,
-                            height: 40,
-                            fit: BoxFit.contain,
+                          return Container(
+                            color: Colors.white,
+                            child: Image.asset(
+                              UiUtils.getImagePath("placeholder.png"),
+                              width: 40,
+                              height: 40,
+                              fit: BoxFit.contain,
+                            ),
                           );
                         }),
                         placeholderErrorBuilder: ((context, error, stackTrace) {
@@ -458,7 +461,7 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
                   padding: const EdgeInsets.only(top: 3),
                   child: Text(
                     category.categoryName!,
-                    style: TextStyle(fontSize: 16, color: Colors.black /* selectedChoices.contains(category.id) ? Colors.white : Colors.black */, fontWeight: FontWeight.bold
+                    style: TextStyle(fontSize: 16, color: selectedChoices.contains(category.id) ? Colors.white : Colors.black, fontWeight: FontWeight.bold
                     ),
                     textAlign: TextAlign.center,
                     maxLines: 2,
@@ -520,7 +523,8 @@ class StateManagePref extends State<ManagePref> with TickerProviderStateMixin {
           if (state is SetUserPrefCatFetchSuccess) {
             showSnackBar(UiUtils.getTranslatedLabel(context, 'preferenceSave'), context);
             if (widget.from == 2) {
-              Navigator.of(context).pushReplacementNamed(Routes.home, arguments: false);
+              // Navigator.of(context).pushReplacementNamed(Routes.home, arguments: false);
+              Navigator.of(context).pushNamed(Routes.newsDetails, arguments: {"isFromBreak": false, "fromShowMore": false});
             } else {
               Navigator.pop(context);
             }

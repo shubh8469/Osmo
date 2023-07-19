@@ -230,7 +230,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 Navigator.of(context).pushNamed(Routes.Userprofile);
               }
               else{
-                Navigator.of(context).pushNamed(Routes.login);
+                Navigator.of(context).pushNamed(Routes.requestOtp);
               }
               break;
             default:
@@ -316,7 +316,7 @@ class ProfileScreenState extends State<ProfileScreen> {
 
   askToLoginAgain() {
     showSnackBar(UiUtils.getTranslatedLabel(context, 'loginReqMsg'), context);
-    Navigator.of(context).pushNamedAndRemoveUntil(Routes.login, (route) => false);
+    Navigator.of(context).pushNamedAndRemoveUntil(Routes.requestOtp, (route) => false);
   }
 
   proceedToDeleteProfile() async {
@@ -329,7 +329,7 @@ class ProfileScreenState extends State<ProfileScreen> {
           for (int i = 0; i < AuthProvider.values.length; i++) {
             if (AuthProvider.values[i].name == context.read<AuthCubit>().getType()) {
               context.read<AuthCubit>().signOut(AuthProvider.values[i]).then((value) {
-                Navigator.of(context).pushNamedAndRemoveUntil(Routes.login, (route) => false);
+                Navigator.of(context).pushNamedAndRemoveUntil(Routes.requestOtp, (route) => false);
               });
             }
           }
@@ -340,7 +340,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         for (int i = 0; i < AuthProvider.values.length; i++) {
           if (AuthProvider.values[i].name == context.read<AuthCubit>().getType()) {
             context.read<AuthCubit>().signOut(AuthProvider.values[i]).then((value) {
-              Navigator.of(context).pushNamedAndRemoveUntil(Routes.login, (route) => false);
+              Navigator.of(context).pushNamedAndRemoveUntil(Routes.requestOtp, (route) => false);
             });
           }
         }
@@ -810,7 +810,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         onTap: () {
                           Future.delayed(const Duration(milliseconds: 500), () {
                             setState(() {
-                              Navigator.of(context).pushNamed(Routes.login);
+                              Navigator.of(context).pushNamed(Routes.requestOtp);
                             });
                           });
                         },
@@ -897,7 +897,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                       if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('bookmarkLbl', Icons.bookmarks_rounded, false, true, false, 3),
                       if (context.read<AuthCubit>().getUserId() != "0") SizedBox(height: 10,),
 
-                      if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('categoryLbl', Icons.thumbs_up_down_rounded, false, true, false, 6),
+                      // if (context.read<AuthCubit>().getUserId() != "0") setDrawerItem('categoryLbl', Icons.thumbs_up_down_rounded, false, true, false, 6),
                       // SizedBox(height: 10,),
                       pagesBuild(),
                       // setDrawerItem('rateUs', Icons.stars_sharp, false, true, false, 8),

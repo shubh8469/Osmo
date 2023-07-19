@@ -108,7 +108,7 @@ class RequestOtpState extends State<RequestOtp> {
                 Navigator.pushNamedAndRemoveUntil(context, Routes.signUp, (route) => false);
               }
               else
-                Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
+                Navigator.of(context).pushNamed(Routes.newsDetails, arguments: {"isFromBreak": false, "fromShowMore": false});
             }
           }
         }

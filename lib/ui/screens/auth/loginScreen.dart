@@ -161,14 +161,15 @@ class LoginScreenState extends State<LoginScreen> with SingleTickerProviderState
                 Navigator.of(context).pushNamedAndRemoveUntil(Routes.managePref, (route) => false, arguments: {"from": 2});
               } else if (widget.isFromApp == true) {
                 Navigator.pop(context);
-              } else {
+              }
+              else {
                 // print("---->> ${state.authModel.name}");
                 if(state.authModel.name!.isEmpty || state.authModel.name == null){
                   print("sggsgsgs");
                   Navigator.pushNamedAndRemoveUntil(context, Routes.signUp, (route) => false);
                 }
                 else
-                Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
+                  Navigator.of(context).pushNamed(Routes.newsDetails, arguments: {"isFromBreak": false, "fromShowMore": false});
               }
             }
           }
