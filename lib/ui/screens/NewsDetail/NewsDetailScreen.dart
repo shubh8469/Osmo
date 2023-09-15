@@ -567,7 +567,9 @@ class NewsDetailsState extends State<NewsDetailScreen> {
               ),
             );
           });
-        });
+        }
+        );
+
     // return showDialog(
     //     context: context,
     //     builder: (BuildContext context) {
